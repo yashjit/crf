@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="organization">
+            <h2><span jhiTranslate="crfApp.organization.detail.title">Organization</span> {{ organization.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.organization.orgName" [ngbTooltip]="'crfApp.organization.help.orgName' | translate">Org Name</span></dt>
+                <dd>
+                    <span>{{ organization.orgName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.organization.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ organization.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.organization.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ organization.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.organization.email">Email</span></dt>
+                <dd>
+                    <span>{{ organization.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.organization.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{ organization.phoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.organization.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{ organization.createDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.organization.location">Location</span></dt>
+                <dd>
+                    <div *ngIf="organization.locationId">
+                        <a [routerLink]="['/location', organization.locationId, 'view']">{{ organization.locationTitle }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/organization', organization.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "crfApp": {
+    "wave": {
+      "home": {
+        "title": "Waves",
+        "createLabel": "Create a new Wave",
+        "createOrEditLabel": "Create or edit a Wave",
+        "notFound": "No Waves found"
+      },
+      "created": "A new Wave is created with identifier {{ param }}",
+      "updated": "A Wave is updated with identifier {{ param }}",
+      "deleted": "A Wave is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Wave {{ id }}?"
+      },
+      "detail": {
+        "title": "Wave"
+      },
+      "waveName": "Wave Name",
+      "fileName": "File Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "status": "Status",
+      "custom": "Custom",
+      "createdBy": "Created By",
+      "createDate": "Create Date",
+      "modifyDate": "Modify Date",
+      "application": "Application",
+      "project": "Project"
+    }
+  }
+}

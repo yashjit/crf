@@ -1,0 +1,28 @@
+{
+  "crfApp": {
+    "configMaster": {
+      "home": {
+        "title": "Config Masters",
+        "createLabel": "Create a new Config Master",
+        "createOrEditLabel": "Create or edit a Config Master",
+        "notFound": "No Config Masters found"
+      },
+      "created": "A new Config Master is created with identifier {{ param }}",
+      "updated": "A Config Master is updated with identifier {{ param }}",
+      "deleted": "A Config Master is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Config Master {{ id }}?"
+      },
+      "detail": {
+        "title": "Config Master"
+      },
+      "name": "Name",
+      "value": "Value",
+      "type": "Type",
+      "description": "Description",
+      "isRequired": "Is Required",
+      "custom": "Custom",
+      "organization": "Organization"
+    }
+  }
+}

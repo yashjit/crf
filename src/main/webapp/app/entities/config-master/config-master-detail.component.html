@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="configMaster">
+            <h2><span jhiTranslate="crfApp.configMaster.detail.title">Config Master</span> {{ configMaster.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.configMaster.name">Name</span></dt>
+                <dd>
+                    <span>{{ configMaster.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.configMaster.value">Value</span></dt>
+                <dd>
+                    <span>{{ configMaster.value }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.configMaster.type">Type</span></dt>
+                <dd>
+                    <span>{{ configMaster.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.configMaster.description">Description</span></dt>
+                <dd>
+                    <span>{{ configMaster.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.configMaster.isRequired">Is Required</span></dt>
+                <dd>
+                    <span>{{ configMaster.isRequired }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.configMaster.custom">Custom</span></dt>
+                <dd>
+                    <span>{{ configMaster.custom }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.configMaster.organization">Organization</span></dt>
+                <dd>
+                    <div *ngIf="configMaster.organizationId">
+                        <a [routerLink]="['/organization', configMaster.organizationId, 'view']">{{ configMaster.organizationOrgName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/config-master', configMaster.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

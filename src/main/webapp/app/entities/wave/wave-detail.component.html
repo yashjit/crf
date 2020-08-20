@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wave">
+            <h2><span jhiTranslate="crfApp.wave.detail.title">Wave</span> {{ wave.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.wave.waveName">Wave Name</span></dt>
+                <dd>
+                    <span>{{ wave.waveName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.fileName">File Name</span></dt>
+                <dd>
+                    <span>{{ wave.fileName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{ wave.startDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{ wave.endDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.status">Status</span></dt>
+                <dd>
+                    <span>{{ wave.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.custom">Custom</span></dt>
+                <dd>
+                    <span>{{ wave.custom }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ wave.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{ wave.createDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.modifyDate">Modify Date</span></dt>
+                <dd>
+                    <span>{{ wave.modifyDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.wave.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="wave.projectId">
+                        <a [routerLink]="['/project', wave.projectId, 'view']">{{ wave.projectProjectName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wave', wave.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

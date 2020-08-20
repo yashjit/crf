@@ -1,0 +1,36 @@
+{
+  "crfApp": {
+    "workload": {
+      "home": {
+        "title": "Workloads",
+        "createLabel": "Create a new Workload",
+        "createOrEditLabel": "Create or edit a Workload",
+        "notFound": "No Workloads found"
+      },
+      "created": "A new Workload is created with identifier {{ param }}",
+      "updated": "A Workload is updated with identifier {{ param }}",
+      "deleted": "A Workload is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Workload {{ id }}?"
+      },
+      "detail": {
+        "title": "Workload"
+      },
+      "title": "Title",
+      "type": "Type",
+      "movegroup": "Movegroup",
+      "serverName": "Server Name",
+      "serverTier": "Server Tier",
+      "os": "Os",
+      "cloudInfo": "Cloud Info",
+      "description": "Description",
+      "custom": "Custom",
+      "status": "Status",
+      "createDate": "Create Date",
+      "modifyDate": "Modify Date",
+      "createdBy": "Created By",
+      "blueprint": "Blueprint",
+      "wave": "Wave"
+    }
+  }
+}

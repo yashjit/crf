@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="crfApp.workload.home.title">Workloads</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-workload" [routerLink]="['/workload/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="crfApp.workload.home.createLabel">
+            Create a new Workload
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="workloads?.length === 0">
+        <span jhiTranslate="crfApp.workload.home.notFound">No workloads found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="workloads && workloads.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="crfApp.workload.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="crfApp.workload.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="movegroup"><span jhiTranslate="crfApp.workload.movegroup">Movegroup</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="serverName"><span jhiTranslate="crfApp.workload.serverName">Server Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="serverTier"><span jhiTranslate="crfApp.workload.serverTier">Server Tier</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="os"><span jhiTranslate="crfApp.workload.os">Os</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cloudInfo"><span jhiTranslate="crfApp.workload.cloudInfo">Cloud Info</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="crfApp.workload.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="custom"><span jhiTranslate="crfApp.workload.custom">Custom</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="crfApp.workload.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createDate"><span jhiTranslate="crfApp.workload.createDate">Create Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="modifyDate"><span jhiTranslate="crfApp.workload.modifyDate">Modify Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="crfApp.workload.createdBy">Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                <tr *ngFor="let workload of workloads ;trackBy: trackId">
+                    <td><a [routerLink]="['/workload', workload.id, 'view']">{{ workload.id }}</a></td>
+                    <td>{{ workload.title }}</td>
+                    <td>{{ workload.type }}</td>
+                    <td>{{ workload.movegroup }}</td>
+                    <td>{{ workload.serverName }}</td>
+                    <td>{{ workload.serverTier }}</td>
+                    <td>{{ workload.os }}</td>
+                    <td>{{ workload.cloudInfo }}</td>
+                    <td>{{ workload.description }}</td>
+                    <td>{{ workload.custom }}</td>
+                    <td>{{ workload.status }}</td>
+                    <td>{{ workload.createDate | date:'medium' }}</td>
+                    <td>{{ workload.modifyDate | date:'medium' }}</td>
+                    <td>{{ workload.createdBy }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/workload', workload.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/workload', workload.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(workload)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

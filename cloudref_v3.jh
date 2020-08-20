@@ -1,0 +1,189 @@
+entity Project {
+	projectName String maxlength(50) required
+    projectType String required
+    targetCloud String required
+    startDate LocalDate required
+    endDate LocalDate required
+    custom String
+    status String
+    createdBy String
+    createDate Instant
+    modifyDate Instant
+}
+
+/**
+ * The Organization entity.
+ */
+entity Organization {
+	/**
+	* The firstname attribute.
+	*/
+    orgName String maxlength(50) required unique
+	firstName String maxlength(20) required
+	lastName String maxlength(20)
+	email String required unique
+	phoneNumber String required unique
+	createDate Instant
+}
+
+entity Team {
+    teamName String maxlength(50) required unique
+	createDate Instant
+}
+
+entity Country {
+	countryName String required unique
+    countryCode Integer required unique
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Location {
+	title String required
+	streetAddress String required
+	postalCode String required unique
+	city String required
+	stateProvince String required
+}
+
+entity Region {
+	regionName String required unique
+}
+
+entity Zone {
+	zoneName String required unique
+}
+
+entity FieldMaster {
+	name String required
+    value String
+    type String
+	description String
+    isRequired Boolean
+    custom String
+}
+
+entity ConfigMaster {
+	name String required
+    value String
+    type String
+	description String
+    isRequired Boolean
+    custom String
+}
+
+
+entity Wave {
+	waveName String required
+    fileName String
+    startDate Instant
+	endDate Instant
+    status String
+    custom String
+    createdBy String
+    createDate Instant
+    modifyDate Instant
+}
+
+entity Application {
+	appName String required
+    appType String required
+    custom String
+}
+
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Workload {
+	title String required
+    type String
+    movegroup Integer
+    serverName String
+    serverTier String
+    os String
+    cloudInfo String
+	description String
+    custom String
+    status String
+    createDate Instant
+    modifyDate Instant
+    createdBy String
+    
+}
+
+entity Blueprint {
+	title String required
+    type String
+	description String
+    template String
+    custom String
+}
+
+//relationship OneToOne {
+//	Application{wave(waveName)} to Wave
+//}
+
+
+relationship OneToOne {
+	Organization{location(title)} to Location
+}
+
+//relationship ManyToMany {
+//	Wave{task(title)} to Task{wave}
+//}
+
+relationship ManyToMany{
+	Application{workload(title)} to Workload{wave}
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Country to Location{country(countryName)},
+	/**
+	* A relationship
+	*/
+	Organization to Project { organization(orgName) },
+    /**
+	* A relationship
+	*/
+    Organization to Team { organization(orgName) },
+	/**
+	* A relationship
+	*/
+	Project to Wave { project(projectName) },
+    /**
+	* A relationship
+	*/
+    Wave to Application { wave(waveName) },
+    
+    /**
+	* A relationship
+	*/
+	Workload to Blueprint { workload(title) }
+	/**
+	* A relationship
+	*/
+	Organization to ConfigMaster{organization(orgName)}
+    
+
+}
+
+//relationship ManyToOne {
+//	Client{manager} to Client
+//}
+
+
+// Set pagination options
+paginate Project, Organization, Wave, Workload with infinite-scroll
+paginate Wave with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

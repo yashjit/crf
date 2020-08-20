@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="workload">
+            <h2><span jhiTranslate="crfApp.workload.detail.title">Workload</span> {{ workload.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.workload.title">Title</span></dt>
+                <dd>
+                    <span>{{ workload.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.type">Type</span></dt>
+                <dd>
+                    <span>{{ workload.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.movegroup">Movegroup</span></dt>
+                <dd>
+                    <span>{{ workload.movegroup }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.serverName">Server Name</span></dt>
+                <dd>
+                    <span>{{ workload.serverName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.serverTier">Server Tier</span></dt>
+                <dd>
+                    <span>{{ workload.serverTier }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.os">Os</span></dt>
+                <dd>
+                    <span>{{ workload.os }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.cloudInfo">Cloud Info</span></dt>
+                <dd>
+                    <span>{{ workload.cloudInfo }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.description">Description</span></dt>
+                <dd>
+                    <span>{{ workload.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.custom">Custom</span></dt>
+                <dd>
+                    <span>{{ workload.custom }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.status">Status</span></dt>
+                <dd>
+                    <span>{{ workload.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{ workload.createDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.modifyDate">Modify Date</span></dt>
+                <dd>
+                    <span>{{ workload.modifyDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.workload.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ workload.createdBy }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/workload', workload.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

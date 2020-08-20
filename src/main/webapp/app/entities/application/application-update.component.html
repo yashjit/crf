@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-application-heading" jhiTranslate="crfApp.application.home.createOrEditLabel">Create or edit a Application</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="crfApp.application.appName" for="field_appName">App Name</label>
+                    <input type="text" class="form-control" name="appName" id="field_appName"
+                           formControlName="appName"/>
+                    <div *ngIf="editForm.get('appName')!.invalid && (editForm.get('appName')!.dirty || editForm.get('appName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('appName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="crfApp.application.appType" for="field_appType">App Type</label>
+                    <input type="text" class="form-control" name="appType" id="field_appType"
+                           formControlName="appType"/>
+                    <div *ngIf="editForm.get('appType')!.invalid && (editForm.get('appType')!.dirty || editForm.get('appType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('appType')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="crfApp.application.custom" for="field_custom">Custom</label>
+                    <input type="text" class="form-control" name="custom" id="field_custom"
+                           formControlName="custom"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="crfApp.application.workload" for="field_workloads">Workload</label>
+                    <select class="form-control" id="field_workloads" multiple name="workloads" formControlName="workloads">
+                        <option [ngValue]="getSelected(editForm.get('workloads')!.value, workloadOption)" *ngFor="let workloadOption of workloads; trackBy: trackById">{{ workloadOption.title }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="crfApp.application.wave" for="field_wave">Wave</label>
+                    <select class="form-control" id="field_wave" name="wave" formControlName="waveId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="waveOption.id" *ngFor="let waveOption of waves; trackBy: trackById">{{ waveOption.waveName }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

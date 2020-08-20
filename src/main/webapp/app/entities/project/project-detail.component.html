@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="project">
+            <h2><span jhiTranslate="crfApp.project.detail.title">Project</span> {{ project.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.project.projectName">Project Name</span></dt>
+                <dd>
+                    <span>{{ project.projectName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.projectType">Project Type</span></dt>
+                <dd>
+                    <span>{{ project.projectType }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.targetCloud">Target Cloud</span></dt>
+                <dd>
+                    <span>{{ project.targetCloud }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{ project.startDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{ project.endDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.custom">Custom</span></dt>
+                <dd>
+                    <span>{{ project.custom }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.status">Status</span></dt>
+                <dd>
+                    <span>{{ project.status }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{ project.createdBy }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{ project.createDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.modifyDate">Modify Date</span></dt>
+                <dd>
+                    <span>{{ project.modifyDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.project.organization">Organization</span></dt>
+                <dd>
+                    <div *ngIf="project.organizationId">
+                        <a [routerLink]="['/organization', project.organizationId, 'view']">{{ project.organizationOrgName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project', project.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

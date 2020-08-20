@@ -1,0 +1,46 @@
+{
+  "name": "Blueprint",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "template",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custom",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "workload",
+      "otherEntityRelationshipName": "blueprint",
+      "relationshipName": "workload",
+      "otherEntityField": "title"
+    }
+  ],
+  "changelogDate": "20200820164557",
+  "entityTableName": "blueprint",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
