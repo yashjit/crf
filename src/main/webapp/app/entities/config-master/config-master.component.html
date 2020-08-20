@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="crfApp.configMaster.home.title">Config Masters</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-config-master" [routerLink]="['/config-master/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="crfApp.configMaster.home.createLabel">
+            Create a new Config Master
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="configMasters?.length === 0">
+        <span jhiTranslate="crfApp.configMaster.home.notFound">No configMasters found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="configMasters && configMasters.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.value">Value</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.type">Type</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.description">Description</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.isRequired">Is Required</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.custom">Custom</span></th>
+                    <th scope="col" ><span jhiTranslate="crfApp.configMaster.organization">Organization</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let configMaster of configMasters ;trackBy: trackId">
+                    <td><a [routerLink]="['/config-master', configMaster.id, 'view']">{{ configMaster.id }}</a></td>
+                    <td>{{ configMaster.name }}</td>
+                    <td>{{ configMaster.value }}</td>
+                    <td>{{ configMaster.type }}</td>
+                    <td>{{ configMaster.description }}</td>
+                    <td>{{ configMaster.isRequired }}</td>
+                    <td>{{ configMaster.custom }}</td>
+                    <td>
+                        <div *ngIf="configMaster.organizationId">
+                            <a [routerLink]="['/organization', configMaster.organizationId , 'view']" >{{ configMaster.organizationOrgName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/config-master', configMaster.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/config-master', configMaster.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(configMaster)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

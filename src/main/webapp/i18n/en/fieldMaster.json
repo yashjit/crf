@@ -1,0 +1,27 @@
+{
+  "crfApp": {
+    "fieldMaster": {
+      "home": {
+        "title": "Field Masters",
+        "createLabel": "Create a new Field Master",
+        "createOrEditLabel": "Create or edit a Field Master",
+        "notFound": "No Field Masters found"
+      },
+      "created": "A new Field Master is created with identifier {{ param }}",
+      "updated": "A Field Master is updated with identifier {{ param }}",
+      "deleted": "A Field Master is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Field Master {{ id }}?"
+      },
+      "detail": {
+        "title": "Field Master"
+      },
+      "name": "Name",
+      "value": "Value",
+      "type": "Type",
+      "description": "Description",
+      "isRequired": "Is Required",
+      "custom": "Custom"
+    }
+  }
+}

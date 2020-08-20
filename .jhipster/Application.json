@@ -1,0 +1,47 @@
+{
+  "name": "Application",
+  "fields": [
+    {
+      "fieldName": "appName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "appType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "custom",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "workload",
+      "otherEntityRelationshipName": "wave",
+      "relationshipName": "workload",
+      "otherEntityField": "title",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "wave",
+      "otherEntityRelationshipName": "application",
+      "relationshipName": "wave",
+      "otherEntityField": "waveName"
+    }
+  ],
+  "changelogDate": "20200820164357",
+  "entityTableName": "application",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

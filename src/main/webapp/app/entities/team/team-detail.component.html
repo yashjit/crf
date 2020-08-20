@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="team">
+            <h2><span jhiTranslate="crfApp.team.detail.title">Team</span> {{ team.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.team.teamName">Team Name</span></dt>
+                <dd>
+                    <span>{{ team.teamName }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.team.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{ team.createDate }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.team.organization">Organization</span></dt>
+                <dd>
+                    <div *ngIf="team.organizationId">
+                        <a [routerLink]="['/organization', team.organizationId, 'view']">{{ team.organizationOrgName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/team', team.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

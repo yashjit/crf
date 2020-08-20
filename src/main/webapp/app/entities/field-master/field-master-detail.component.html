@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="fieldMaster">
+            <h2><span jhiTranslate="crfApp.fieldMaster.detail.title">Field Master</span> {{ fieldMaster.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="crfApp.fieldMaster.name">Name</span></dt>
+                <dd>
+                    <span>{{ fieldMaster.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.fieldMaster.value">Value</span></dt>
+                <dd>
+                    <span>{{ fieldMaster.value }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.fieldMaster.type">Type</span></dt>
+                <dd>
+                    <span>{{ fieldMaster.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.fieldMaster.description">Description</span></dt>
+                <dd>
+                    <span>{{ fieldMaster.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.fieldMaster.isRequired">Is Required</span></dt>
+                <dd>
+                    <span>{{ fieldMaster.isRequired }}</span>
+                </dd>
+                <dt><span jhiTranslate="crfApp.fieldMaster.custom">Custom</span></dt>
+                <dd>
+                    <span>{{ fieldMaster.custom }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/field-master', fieldMaster.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

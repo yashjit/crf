@@ -1,0 +1,27 @@
+{
+  "crfApp": {
+    "blueprint": {
+      "home": {
+        "title": "Blueprints",
+        "createLabel": "Create a new Blueprint",
+        "createOrEditLabel": "Create or edit a Blueprint",
+        "notFound": "No Blueprints found"
+      },
+      "created": "A new Blueprint is created with identifier {{ param }}",
+      "updated": "A Blueprint is updated with identifier {{ param }}",
+      "deleted": "A Blueprint is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Blueprint {{ id }}?"
+      },
+      "detail": {
+        "title": "Blueprint"
+      },
+      "title": "Title",
+      "type": "Type",
+      "description": "Description",
+      "template": "Template",
+      "custom": "Custom",
+      "workload": "Workload"
+    }
+  }
+}

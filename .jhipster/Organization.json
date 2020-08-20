@@ -1,0 +1,81 @@
+{
+  "name": "Organization",
+  "fields": [
+    {
+      "fieldName": "orgName",
+      "fieldType": "String",
+      "javadoc": "The firstname attribute.",
+      "fieldValidateRules": ["maxlength", "required", "unique"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "location",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "location",
+      "otherEntityField": "title",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "organization",
+      "javadoc": "A relationship",
+      "relationshipName": "project"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "team",
+      "otherEntityRelationshipName": "organization",
+      "javadoc": "A relationship",
+      "relationshipName": "team"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "configMaster",
+      "otherEntityRelationshipName": "organization",
+      "javadoc": "A relationship",
+      "relationshipName": "configMaster"
+    }
+  ],
+  "changelogDate": "20200820163457",
+  "javadoc": "The Organization entity.",
+  "entityTableName": "organization",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

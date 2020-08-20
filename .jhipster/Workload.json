@@ -1,0 +1,87 @@
+{
+  "name": "Workload",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "movegroup",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "serverName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "serverTier",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "os",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cloudInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "custom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "modifyDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "blueprint",
+      "otherEntityRelationshipName": "workload",
+      "javadoc": "A relationship",
+      "relationshipName": "blueprint"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "application",
+      "otherEntityRelationshipName": "workload",
+      "relationshipName": "wave",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200820164457",
+  "javadoc": "Task entity.\\n@author The JHipster team.",
+  "entityTableName": "workload",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
